@@ -9,5 +9,4 @@ bs_median  <- function(x) {
 
 set.seed(77623)
 distmuestral_boot <- replicate(5000, bs_median()) %>% as_tibble()
-
 glimpse(distmuestral_boot)

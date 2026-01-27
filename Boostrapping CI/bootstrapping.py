@@ -72,7 +72,7 @@ class Bootstrap(Scene):
             background = 'window',
             background_config={"stroke_color": "maroon"}
         )
-        codigo.scale(0.5)
+        codigo_mean.scale(0.5)
         '''
         chart = BarChart(
             values = valores,
@@ -86,18 +86,18 @@ class Bootstrap(Scene):
         self.add(chart)
         '''
         
-        bloque1 = (codigo[2][0], codigo[2][1], codigo[2][2], codigo[2][3], codigo[2][4],
-                   codigo[2][5], codigo[2][6])
+        bloque1 = (codigo_mean[2][0], codigo_mean[2][1], codigo_mean[2][2], codigo_mean[2][3], 
+                   codigo_mean[2][4], codigo_mean[2][5], codigo_mean[2][6])
         
-        data_b = (codigo[2][1], codigo[2][2], codigo[2][3])
+        data_b = (codigo_mean[2][1], codigo_mean[2][2], codigo_mean[2][3])
         
         
         box1 = SurroundingRectangle(*bloque1, corner_radius=0.1, buff = 0.05)
         box2 = SurroundingRectangle(*data_b, corner_radius=0.1, buff = 0.05)
-        box3 = SurroundingRectangle(*codigo[2][4], corner_radius=0.1, buff = 0.05)
-        box4 = SurroundingRectangle(*codigo[2][5], corner_radius=0.1, buff = 0.05)
+        box3 = SurroundingRectangle(*codigo_mean[2][4], corner_radius=0.1, buff = 0.05)
+        box4 = SurroundingRectangle(*codigo_mean[2][5], corner_radius=0.1, buff = 0.05)
         
-        self.add(codigo)
+        self.add(codigo_mean)
         self.play(Create(box1))
         self.wait()
         self.play(ReplacementTransform(box1, box2))
