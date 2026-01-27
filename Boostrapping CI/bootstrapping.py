@@ -10,11 +10,24 @@ import pandas as pd
 
 class Bootstrap(Scene):
     def cargar_csv(self):
+        
+        #Cocinamos los datos igual que el DF original
+        #Linea 46-49 https://github.com/mebucca/ad2-sol114/blob/master/slides/class_15/class_15.Rmd
+        
         csv = pd.read_csv(path.join('Assets', 'sample_casen2017.csv'))
         csv = csv[csv['sexo'] == 2]
-
-        np.random.seed(0)
-        def bs_mean(n):
+        csv = csv.rename(columns={'yautcor': 'ingreso'})
+        csv = csv[['region', 'sexo', 'edad', 'educ', 'ingreso']]
+        #sin 'univ' ya que no es necesaria para este ejercicio.
+        
+        return csv
+    
+    def boostrap_mean(self):
+        csv = self.cargar_csv()
+        
+        
+        np.random.seed(0)#Seed fija
+        def bs_mean(n): #BS func para la media
             for x in range(n):
                 sample = csv.sample(n = len(csv), replace = True)
                 mean = sample['yautcor'].mean()
@@ -29,12 +42,32 @@ class Bootstrap(Scene):
         
         return valores, labels
     
+    def boostrap_median(self):
+        csv = self.cargar_csv()
+        
+        
+        np.random.seed(0) #Seed fija
+        def bs_median(n): #Boostrap function para la mediana
+            for x in range(n):
+                sample = csv.sample(n = len(csv), replace = True)
+                median = sample['yautcor'].median()
+                yield median
+                
+        data = np.fromiter(bs_median(5000), dtype= int, count=5000)
+        
+        hist, ejes = np.histogram(data, bins= 40)
+        
+        valores = list(hist)
+        labels = [f'{int(eje)}' for eje in ejes[:-1]]
+        
+        return valores, labels
+    
     
     def construct(self):
-        valores, labels = self.cargar_csv()
+        valores, labels = self.boostrap_mean()
         
-        codigo = Code(
-            code_file = 'algorithm.R',
+        codigo_mean = Code(
+            code_file = path.join('Assets', 'algoritm_median.R'),
             language = 'R',
             background = 'window',
             background_config={"stroke_color": "maroon"}
