@@ -1,3 +1,5 @@
+# Repositorio de animaciones hechas para cursos SOL-UC
+
 
 ## Instrucciones
 ### Para ejecutar cualquiera de las animaciones, debes escrbir en consola:
