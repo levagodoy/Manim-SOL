@@ -30,7 +30,7 @@ class Bootstrap(Scene):
         def bs_mean(n): #BS func para la media
             for x in range(n):
                 sample = csv.sample(n = len(csv), replace = True)
-                mean = sample['yautcor'].mean()
+                mean = sample['ingreso'].mean()
                 yield mean
                 
         data = np.fromiter(bs_mean(5000), dtype= int, count=5000)
@@ -50,7 +50,7 @@ class Bootstrap(Scene):
         def bs_median(n): #Boostrap function para la mediana
             for x in range(n):
                 sample = csv.sample(n = len(csv), replace = True)
-                median = sample['yautcor'].median()
+                median = sample['ingreso'].median()
                 yield median
                 
         data = np.fromiter(bs_median(5000), dtype= int, count=5000)
