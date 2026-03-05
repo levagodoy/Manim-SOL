@@ -67,7 +67,7 @@ class Bootstrap(Scene):
         valores, labels = self.boostrap_mean()
         
         codigo_mean = Code(
-            code_file = path.join('Assets', 'algoritm_median.R'),
+            code_file = path.join('Assets', 'algoritm_mean.R'),
             language = 'R',
             background = 'window',
             background_config={"stroke_color": "maroon"}

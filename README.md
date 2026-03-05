@@ -20,3 +20,7 @@ manim lln.py LLN
 
 #### LGN 
 ![LLN](previews/LLN.gif)
+
+
+#### TLC (sample) 
+![CLT](previews/CLT.gif)
