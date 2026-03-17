@@ -1,7 +1,7 @@
 # Repositorio de animaciones hechas para cursos SOL-UC
 © 2026 Tomás Leva. 
 
-## Requesitos
+## Requisitos
 Animaciones creadas con [Manim Community](https://www.manim.community/). Se requiere su instalación para ejecutar los scripts de este repositorio.
 
 ## Instrucciones
